@@ -42,21 +42,22 @@ Host Name : python
 Password : python
 
 회원 - 학번, ID, PW, 이름, 전화번호, 탈퇴유무, 등록일자
-Create Table member (
-student_id varchar(9) NOT NULL,
-id varchar(20) NOT NULL,
-password varchar(16) NOT NULL,
-name varchar(30),
-phone varchar(11),
-ghost varchar(1) default 'n',
-reg_date timestamp default CURRENT_TIMESTAMP NOT NULL,
-Primary Key(student_id)
-);
+CREATE TABLE member(
+    -> student_id varchar(9) NOT NULL,
+    -> id varchar(20) NOT NULL,
+    -> password varchar(16) NOT NULL,
+    -> name varchar(30),
+    -> phone varchar(11),
+    -> ghost varchar(1) default 'n' NOT NULL,
+    -> reg_date timestamp default CURRENT_TIMESTAMP NOT NULL,
+    -> Primary Key(student_id),
+    -> Unique Key(id)
+    -> );
 ------------------------------------------------------
-Project Name : FameID
+Project Name : Face-Recognition
 Package Name : com.spring.face
 
-com.spring.face.admin [미정]
+com.spring.face.Admin [미정]
 - AdminController
 
 com.spring.face.Controller
