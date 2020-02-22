@@ -42,14 +42,15 @@ Host Name : python
 Password : python
 
 회원 - 학번, ID, PW, 이름, 전화번호, 탈퇴유무, 등록일자
-CREATE TABLE member(
+mysql> CREATE TABLE member(
     -> student_id varchar(9) NOT NULL,
     -> id varchar(20) NOT NULL,
     -> password varchar(16) NOT NULL,
     -> name varchar(30),
     -> phone varchar(11),
     -> ghost varchar(1) default 'n' NOT NULL,
-    -> reg_date timestamp default CURRENT_TIMESTAMP NOT NULL,
+    -> create_date timestamp default CURRENT_TIMESTAMP NOT NULL,
+    -> modified_date timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     -> Primary Key(student_id),
     -> Unique Key(id)
     -> );
@@ -100,6 +101,8 @@ MemberDTO
 - private String password [set / get]
 - private String name [set / get]
 - private String phone [set / get]
+- private Timestamp create_date [set/get]
+- private Timestamp modified_date [set/get]
 
 IMemberDAO
 - public List<MemberDTO> memberList()			        //관리자 - 회원 전체목록
