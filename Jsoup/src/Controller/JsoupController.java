@@ -8,8 +8,11 @@ public class JsoupController {
 		
 		Parsing parser = new Parsing();
 		
-		parser.CyberRoom("", "");
-		parser.TotalInfomation("", "");
+		//parser.CyberRoom("", "");
+		//parser.TotalInfomation("", "")
+		
+		MainFrame main = new MainFrame();
+		main.CreateFrame();
 	}
 
 }
