@@ -1,3 +1,8 @@
+2020.02.27 수정사항 
+ - Spring <-> Python REST API 를 통해 사용자의 얼굴인식 결과 값을 전송
+ - Python 의 Beautifulsoup Library 를 통한 파싱 보류 
+----------------------------------------------------------------------
+
 개발환경 : Ubuntu(AWS), Spring, Python, MySQL
 
 관리자
