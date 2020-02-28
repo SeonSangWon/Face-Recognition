@@ -132,7 +132,9 @@ FileUpload
 ------------------------------------------------------
 URL
 
-(home.jsp) / : 메인 page [회원가입 / EXE 다운로드]
+(adminpage.jsp) admin : 관리자 - 메인 page
+(adminMemberList.jsp) adminMemberList : 관리자 - 모든 회원정보 목록 (패스워드 )
+(home.jsp) / : 메인 page [회원가입 / 로그인]
 (signup.jsp) signup : 회원가입 page 
 (signin.jsp) signin : 로그인 page
 (download.jsp) download : EXE 다운로드 page
