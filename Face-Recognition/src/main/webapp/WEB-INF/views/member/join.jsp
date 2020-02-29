@@ -32,16 +32,25 @@
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
 
-	function LoginPageMove() {
-		location.href = "signin";
-	}
-
 	function memberInsert() {
+		
 		$("#commentForm").validate();
 		$.extend( $.validator.messages, { 
-			required: "필수 항목입니다."
-		}
+			required: "필수 항목입니다.",
+		 } );
 		document.getElementById("commentForm").submit();
+	}
+</script>
+<script>
+
+	function LoginPageMove() {
+		
+		location.href = "login";
+	}
+	
+	function BackPageMove() {
+		
+		history.back();
 	}
 </script>
 <style>
@@ -67,6 +76,18 @@
 	    margin-bottom: 3%;
 	    cursor: pointer;
 	}
+	.register-left button{
+	    border: none;
+	    border-radius: 1.5rem;
+	    padding: 2%;
+	    width: 60%;
+	    background: #f8f9fa;
+	    font-weight: bold;
+	    color: #383d41;
+	    margin-top: 30%;
+	    margin-bottom: 3%;
+	    cursor: pointer;
+	}
 	.register-right{
 	    background: #f8f9fa;
 	    border-top-left-radius: 10% 50%;
@@ -75,7 +96,7 @@
 	.register-left img{
 	    margin-top: 15%;
 	    margin-bottom: 5%;
-	    width: 25%;
+	    width: 30%;
 	    -webkit-animation: mover 2s infinite  alternate;
 	    animation: mover 1s infinite  alternate;
 	}
@@ -146,13 +167,13 @@
 		<div class="container register">
 			<div class="row">
 				<div class="col-md-3 register-left">
-					<img src="/face/resources/img/yuhan.jpg" alt="" />
+					<img src="/face/resources/img/new_yuhan.png" alt="" />
 					<h3>Welcome</h3>
 					<p>
 						얼굴인식을 통한<br> 유한대학교<br> 사이버강의/종합정보<br> 접속 시스템입니다.
 					</p>
-					<input type="submit" name="" value="Login"
-						onClick="LoginPageMove();" /><br />
+					<!-- <input type="button"value="Login" onClick="LoginPageMove();" /> -->
+					<button type="button" onClick="LoginPageMove();">Login</button>
 				</div>
 				<div class="col-md-9 register-right">
 					<div class="tab-content" id="myTabContent">
@@ -195,6 +216,7 @@
 										<input type="text" class="form-control"
 											placeholder="전화번호를 입력해주세요. ('-'제외)" name="phone_2" required />
 									</div>
+									<button type="button" class="btnRegister" onClick="BackPageMove();">뒤로가기</button>
 									<input type="submit" class="btnRegister" value="회원가입"
 										onClick="memberInsert();" />
 								</div>

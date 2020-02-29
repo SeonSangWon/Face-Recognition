@@ -14,21 +14,32 @@
 	</select>
 	
 	<!-- 회원 : 사이트 로그인 -->
-	<select id="login" resultType="int">
+	<select id="login" resultType="memberDTO">
 		SELECT
-			AES_DECRYPT(UNHEX(password), #{password})
+				student_id
+			,	id
+			,	AES_DECRYPT(UNHEX(password), #{password})
+			,	name
+			,	phone
+			,	ghost
+			,	create_date
+			,	modified_date
 		  FROM	member
 		 WHERE	1=1
 		   AND	id=#{id}
-		   AND	ghost='n'
 	</select>
 	
 	<!-- 회원 : 정보 수정을 위한 정보 조회 -->
 	<select id="selectMember" resultType="memberDTO">
 		SELECT
-			student_id
-		       , id
-		       , AES_DECRYPT(UNHEX(password), #{password})
+				student_id
+			,	id
+			,	AES_DECRYPT(UNHEX(password), #{password})
+			,	name
+			,	phone
+			,	ghost
+			,	create_date
+			,	modified_date
 		  FROM	member
 		 WHERE	1=1
 		   AND	student_id = #{student_id}

@@ -15,8 +15,6 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 <!-- End Favicon -->
-<!-- bootstrap -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <!-- CSS -->
 <link rel="stylesheet" href="/face/resources/css/main.css">
 <meta charset="UTF-8">
@@ -40,11 +38,11 @@
 <body>
 
 	<div class="container" style="margin-top: 150px;">
-		<div style="float:left"></div>
+		<div style="float:left" align="center"></div>
 			<div align="center" style="float:left">
 				<div class="item button-jittery" style="background: #f1c40f; width: 300px; height: 300px; text-align: center;
 					padding-top: 50px; border-radius: 10px; margin-right: 20px; margin-left: 100px;">
-					<button class="btnStyle" onClick="location.href='signup'">
+					<button class="btnStyle" onClick="location.href='join'">
 						<p class="fontStyle">회원가입</p>
 					</button>
 				</div>
@@ -53,7 +51,7 @@
 		<div style="float:left; margin-left: 60px;">
 			<div class="item button-jittery" style="background: #e67e22; width: 300px; height: 300px; text-align: center;
 				padding-top: 50px; border-radius: 10px; margin-right: 20px;">
-				<button class="btnStyle" onClick="">
+				<button class="btnStyle" onClick="location.href='login'">
 					<p class="fontStyle">로그인</p>
 				</button>
 			</div>

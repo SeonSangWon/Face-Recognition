@@ -1,5 +1,6 @@
 package com.spring.face.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,19 +29,9 @@ public class MemberDAO implements IMemberDAO {
 
 	@Override
 	//회원 : 사이트 로그인
-	public int login(MemberDTO memberDTO) {
-		
-		int result = 0;
-		
-		result = sqlSession.selectOne(Namespace+".login", memberDTO);
-		if(memberDTO.getGhost().equals("y"))
-			result = 2;
-		
-		//2 : 탈퇴한 사용자
-		//1 : 로그인 성공
-		//0 : 로그인 실패
-		logger.debug("MemberDAO : resutlt = " + result);
-		return result;
+	public MemberDTO login(MemberDTO memberDTO) {
+
+		return sqlSession.selectOne(Namespace+".login", memberDTO);
 	}
 
 	@Override
