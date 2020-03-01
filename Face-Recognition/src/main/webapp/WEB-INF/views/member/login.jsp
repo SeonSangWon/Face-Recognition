@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- fmt를 사용하기위한 태그 라이브러리 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page session="true" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +86,7 @@
 							name="id" type="text">
 						<input class="form-control" placeholder="비밀번호를 입력해주세요." 
 							name="password" type="password">
-						<a class="pull-right" href="https://bootsnipp.com/password">
+						<a class="pull-right" href="/">
 							Forgot password?
 						</a>
 						<br>

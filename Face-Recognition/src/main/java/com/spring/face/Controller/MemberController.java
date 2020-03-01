@@ -10,9 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.face.DTO.MemberDTO;
+import com.spring.face.GUI.Application;
 import com.spring.face.Service.IMemberService;
 
 @Controller
@@ -22,6 +22,15 @@ public class MemberController {
 	private IMemberService memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
+	@RequestMapping("application")
+	public String application() {
+
+		Application app = new Application();
+		app.createFrame();
+		
+		return null;
+	}
 	
 	/**
 	 * Method ID : join()
@@ -83,8 +92,15 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-	
-	@ResponseBody
+
+	/**
+	 * Method ID : loginCheck
+	 * Method 설명 : 홈페이지에서 ID와 PW를 입력받아 로그인을 진행한다.
+	 * @param memberDTO
+	 * @param model
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/loginCheck")
 	public String loginCheck(MemberDTO memberDTO, Model model, HttpSession session) {
 		

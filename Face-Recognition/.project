@@ -3,6 +3,7 @@
 	<name>Face-Recognition</name>
 	<comment></comment>
 	<projects>
+		<project>Jsoup</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
