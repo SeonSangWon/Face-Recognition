@@ -83,7 +83,7 @@ public class Application extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				Parsing parsing = new Parsing();
-				parsing.TotalInfomation("sangwon7482", "wjdaos12!");
+				parsing.TotalInfomation("", "");
 			}
 		});
 		
