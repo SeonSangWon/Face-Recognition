@@ -30,22 +30,39 @@ public class MemberService implements IMemberService {
 	@Override
 	//회원 : 사이트 로그인
 	public int login(MemberDTO memberDTO, HttpSession session) {
-		//2 : 탈퇴한 사용자
-		//1 : 로그인 성공
-		//0 : 로그인 실패
+		//로그인 실패 : 0
+		//로그인 성공 : 1
+		//탈퇴한 사용자 : 2
 		int result = 0;
-		
+		MemberDTO vo = new MemberDTO();
 		try {
-			result = memberDAO.login(memberDTO);
-			if(result == 1)
-				session.setAttribute("student_id", memberDTO.getStudent_id());
-
-			logger.debug("MemberService : resutlt = " + result);
+			
+			vo = memberDAO.login(memberDTO);
+			
+			//로그인 성공
+			if(vo != null)
+			{
+				if(vo.getGhost().equals("n"))
+				{
+					//로그인 성공코드 1 부여 / 로그인 세션 생성
+					result = 1;
+					session.setAttribute("student_id", vo.getStudent_id());
+				}
+				else
+				{
+					result = 2;
+				}
+			}
+			else
+				result = 0;
+			
+			logger.debug("MemberService : result = " + result);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 			logger.error("MemberService : login() Error!!");
 		}
+		
 		return result;
 	}
 

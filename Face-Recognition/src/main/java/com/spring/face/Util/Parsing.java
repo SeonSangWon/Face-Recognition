@@ -24,6 +24,7 @@ public class Parsing implements IParsing {
 	
 	@Override
 	public void TotalInfomation(String userId, String password) {
+		logger.debug("Paring : TotalInfomation() Run!!!)");
 
 		Runtime runTime = Runtime.getRuntime();
 		

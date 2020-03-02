@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- fmt를 사용하기위한 태그 라이브러리 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page session="true" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,13 +39,12 @@
 	}
 </style>
 <body>
-
 	<div class="container" style="margin-top: 150px;">
 		<div style="float:left"></div>
 			<div align="center" style="float:left">
 				<div class="item button-jittery" style="background: #f1c40f; width: 300px; height: 300px; text-align: center;
 					padding-top: 50px; border-radius: 10px; margin-right: 20px; margin-left: 100px;">
-					<button class="btnStyle" onClick="location.href='signup'">
+					<button class="btnStyle" onClick="location.href='join'">
 						<p class="fontStyle">회원가입</p>
 					</button>
 				</div>
@@ -53,7 +53,7 @@
 		<div style="float:left; margin-left: 60px;">
 			<div class="item button-jittery" style="background: #e67e22; width: 300px; height: 300px; text-align: center;
 				padding-top: 50px; border-radius: 10px; margin-right: 20px;">
-				<button class="btnStyle" onClick="">
+				<button class="btnStyle" onClick="location.href='login'">
 					<p class="fontStyle">로그인</p>
 				</button>
 			</div>

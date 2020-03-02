@@ -9,7 +9,7 @@ public interface IMemberDAO {
 	//관리자 : 회원 전체목록 조회 [비밀번호 복호화X]
 	public List<MemberDTO> adminMemberList();
 	//회원 : 사이트 로그인
-	public int login(MemberDTO memberDTO);
+	public MemberDTO login(MemberDTO memberDTO);
 	//회원 : 정보 수정을 위한 정보 조회
 	public List<MemberDTO> selectMember(MemberDTO memberDTO);
 	//회원 : 정보 저장
