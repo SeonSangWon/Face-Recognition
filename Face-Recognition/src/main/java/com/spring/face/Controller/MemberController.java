@@ -20,7 +20,7 @@ public class MemberController {
 	@Autowired
 	private IMemberService memberService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 	
 	/**
 	 * Method ID : join()
@@ -65,19 +65,19 @@ public class MemberController {
 			phone_2 = request.getParameter("phone_2");
 			memberDTO.setPhone(phone_1 + phone_2);
 			
-			logger.debug("학번 : " + memberDTO.getStudent_id());
-			logger.debug("이름 : " + memberDTO.getName());
-			logger.debug("아이디 : " + memberDTO.getId());
-			logger.debug("비밀번호 : " + memberDTO.getPassword());
-			logger.debug("전화번호 : " + memberDTO.getPhone());
+			log.debug("학번 : " + memberDTO.getStudent_id());
+			log.debug("이름 : " + memberDTO.getName());
+			log.debug("아이디 : " + memberDTO.getId());
+			log.debug("비밀번호 : " + memberDTO.getPassword());
+			log.debug("전화번호 : " + memberDTO.getPhone());
 			
 			//회원가입
 			memberService.memberInsert(memberDTO);
-			logger.debug("MemberController : memberInsert() Success!!");
+			log.debug("MemberController : memberInsert() Success!!");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("MemberController : memberInsert() Error!!");
+			log.error("MemberController : memberInsert() Error!!");
 		}
 		
 		return "redirect:/";
@@ -96,16 +96,16 @@ public class MemberController {
 		
 		try {
 			
-			logger.debug("아이디 : " + memberDTO.getId());
-			logger.debug("비밀번호 : " + memberDTO.getPassword());
+			log.debug("아이디 : " + memberDTO.getId());
+			log.debug("비밀번호 : " + memberDTO.getPassword());
 		
 			memberService.login(memberDTO, session);
-			logger.debug("MemberController : loginCheck() Success!!");
-			logger.debug("MemberController : Session : " + session.getAttribute("student_id"));
+			log.debug("MemberController : loginCheck() Success!!");
+			log.debug("MemberController : Session : " + session.getAttribute("student_id"));
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("MemberController : loginCheck() Error!!");
+			log.error("MemberController : loginCheck() Error!!");
 			
 		}
 		return null;

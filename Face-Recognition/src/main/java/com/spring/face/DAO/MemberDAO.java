@@ -17,7 +17,7 @@ public class MemberDAO implements IMemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private static final Logger logger = LoggerFactory.getLogger(MemberDTO.class);
+	private static final Logger log = LoggerFactory.getLogger(MemberDTO.class);
 	private static final String Namespace = "com.spring.mapper.memberMapper";
 	
 	@Override
@@ -46,7 +46,7 @@ public class MemberDAO implements IMemberDAO {
 		vo.setStudent_id(memberDTO.getStudent_id());
 		
 		
-		logger.debug("MemberDAO : " + vo.getStudent_id());
+		log.debug("MemberDAO : " + vo.getStudent_id());
 		return sqlSession.selectList(Namespace+".selectMember", memberDTO);
 	}
 
@@ -55,7 +55,7 @@ public class MemberDAO implements IMemberDAO {
 	public void memberInsert(MemberDTO memberDTO) {
 
 		sqlSession.insert(Namespace+".memberInsert", memberDTO);
-		logger.debug("MemberDAO : memberInsert() Success!!");
+		log.debug("MemberDAO : memberInsert() Success!!");
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class MemberDAO implements IMemberDAO {
 	public void memberUpdate(MemberDTO memberDTO) {
 		
 		sqlSession.update(Namespace+".memberUpdate", memberDTO);
-		logger.debug("MemberDAO : memberUpdate() Success!!");
+		log.debug("MemberDAO : memberUpdate() Success!!");
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class MemberDAO implements IMemberDAO {
 	public void memberDelete(MemberDTO memberDTO) {
 		
 		sqlSession.update(Namespace+".memberDelete", memberDTO);
-		logger.debug("MemberDAO : memberDelete() Success!!");
+		log.debug("MemberDAO : memberDelete() Success!!");
 	}
 
 }

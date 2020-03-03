@@ -16,30 +16,35 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import Database.Connect;
 import Service.Parsing;
+import Service.RestAPI;
 
 public class Application extends JFrame {
 	
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
-
+	private static final org.slf4j.Logger log = LoggerFactory.getLogger(Application.class);
+	
+	Connect conn;
 	MyPanel panel;
 	JLayeredPane layeredPane;
 	JButton total_btn;
 	JButton cyber_btn;
 	BufferedImage img = null;
 	
+	/**
+	 * Method ID : createFrame()
+	 * Method 설명 : GUI 환경의 Application 호출
+	 */
 	public void createFrame() {
-	
 		
 		try {
 			img = ImageIO.read(new File("C:\\Users\\sangw\\Face-Recognition\\Application\\img\\yuhan_background.jpg"));
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("Application : createFrame() Image Error!!");
+			log.error("Application : createFrame() Image Error!!");
 		}
 		
 		//프레임 설정
@@ -82,7 +87,73 @@ public class Application extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				int result = 0;
+				String student_id = "";
+				String[] infomation = new String[2];
+				File filePath = new File("C:\\Python\\face\\faces\\");
+				Parsing parser = new Parsing();
+				RestAPI api = new RestAPI();
+				
+				result = api.get("http://127.0.0.1:5000/user/faceRecognition");
+				if(result > 0)
+				{
+					log.debug("Login Success Result = " + result);
+					conn = new Connect();
+					
+					try {
+						
+						student_id = student_id_Search(result, filePath);
+						
+						
+						Connect.getConnection();
+						infomation = conn.getInfomation(student_id);
+						
+						parser.TotalInfomation(infomation[0], infomation[1]);
+					}catch(Exception e1) {
+						e1.printStackTrace();
+					}
+					
+				}
+					
+				else
+					log.error("Login Fail");
+			}
+		});
+		
+		cyber_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
+				int result = 0;
+				String student_id = "";
+				String[] infomation = new String[2];
+				File filePath = new File("C:\\Python\\face\\faces");
+				Parsing parser = new Parsing();
+				RestAPI api = new RestAPI();
+				
+				result = api.get("http://127.0.0.1:5000/user/faceRecognition");
+				if(result > 0)
+				{
+					log.debug("Login Success Result = " + result);
+					conn = new Connect();
+					
+					try {
+						
+						student_id = student_id_Search(result, filePath);
+						
+						Connect.getConnection();
+						infomation = conn.getInfomation(student_id);
+						
+						parser.CyberRoom(infomation[0], infomation[1]);
+					}catch(Exception e1) {
+						e1.printStackTrace();
+					}
+					
+				}
+					
+				else
+					log.error("Login Fail");
 			}
 		});
 		
@@ -91,7 +162,10 @@ public class Application extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
-	//프레임 화면 정중앙
+	/**
+	 * Method ID : centerScreen()
+	 * Method 설명 : 화면의 정중앙에 GUI Application을 위치시킨다.
+	 */
 	public void centerScreen() {
 		
 		//Java 화면 크기
@@ -103,6 +177,31 @@ public class Application extends JFrame {
 		//(모니터화면.가로 - 프레임화면.가로) / 2 , (모니터화면.세로 - 프레임화면.세로) / 2
 		super.setLocation((screenSize.width - frameSize.width) / 2 , (screenSize.height - frameSize.height) / 2);
 		
+	}
+	
+	/**
+	 * Method ID : student_id_Search()
+	 * Method 설명 : 얼굴인식하는 학생의 학번을 조회
+	 * @param result
+	 * @param filePath
+	 * @return
+	 */
+	public String student_id_Search(int result, File filePath) {
+		
+		//C:\Python\face 경로 받아오기
+		File[] fileList = filePath.listFiles();
+		String img = "";
+		String[] split = new String[2];
+		
+		for(int i=0; i<result; i++)
+		{
+			img = fileList[i].getName();
+		}
+		split = img.split("_");
+		split[0] = split[0].trim();
+		img = split[0];
+	
+		return img;
 	}
 	
 	class MyPanel extends JPanel {

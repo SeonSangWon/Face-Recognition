@@ -18,7 +18,7 @@ public class MemberService implements IMemberService {
 	@Autowired
 	private IMemberDAO memberDAO;
 	
-	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
+	private static final Logger log = LoggerFactory.getLogger(MemberService.class);
 
 	@Override
 	//관리자 : 회원 전체목록 조회 [비밀번호 복호화X]
@@ -56,11 +56,11 @@ public class MemberService implements IMemberService {
 			else
 				result = 0;
 			
-			logger.debug("MemberService : result = " + result);
+			log.debug("MemberService : result = " + result);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("MemberService : login() Error!!");
+			log.error("MemberService : login() Error!!");
 		}
 		
 		return result;
@@ -78,11 +78,11 @@ public class MemberService implements IMemberService {
 			vo.setStudent_id(student_id);
 			vo.setStudent_id(memberDTO.getStudent_id());
 			
-			logger.debug("MemberService : " + vo.getStudent_id());
+			log.debug("MemberService : " + vo.getStudent_id());
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("MemberService : selectMember() Error!!");
+			log.error("MemberService : selectMember() Error!!");
 		}
 		
 		return memberDAO.selectMember(memberDTO);
@@ -94,11 +94,11 @@ public class MemberService implements IMemberService {
 		
 		try {
 			memberDAO.memberInsert(memberDTO);
-			logger.debug("MemberService : memberInsert() Success!!");
+			log.debug("MemberService : memberInsert() Success!!");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("MemberService : memberInsert() Error!!");
+			log.error("MemberService : memberInsert() Error!!");
 		}
 	}
 
@@ -108,11 +108,11 @@ public class MemberService implements IMemberService {
 		
 		try {
 			memberDAO.memberUpdate(memberDTO);
-			logger.debug("MemberService : memberUpdate() Success!!");
+			log.debug("MemberService : memberUpdate() Success!!");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("MemberService : memberUpdate() Error!!");
+			log.error("MemberService : memberUpdate() Error!!");
 		}
 	}
 
@@ -123,11 +123,11 @@ public class MemberService implements IMemberService {
 		
 		try {
 			memberDAO.memberDelete(memberDTO);
-			logger.debug("MemberService : memberDelete() Success!!");
+			log.debug("MemberService : memberDelete() Success!!");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("MemberService : memberDelete() Error!!");
+			log.error("MemberService : memberDelete() Error!!");
 		}
 	}
 }

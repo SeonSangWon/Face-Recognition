@@ -16,7 +16,7 @@ public class AdminController {
 	@Autowired
 	private IMemberService memberService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
 	//관리자 메인 홈페이지
 	@RequestMapping("admin")
@@ -31,11 +31,11 @@ public class AdminController {
 		
 		try {
 			model.addAttribute("adminMemberList", memberService.adminMemberList());
-			logger.debug("AdminController : adminMemberList() Success!!");
+			log.debug("AdminController : adminMemberList() Success!!");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			logger.error("AdminController : adminMemberList() Error!!");
+			log.error("AdminController : adminMemberList() Error!!");
 		}
 		
 		return "/admin/adminMemberList";
