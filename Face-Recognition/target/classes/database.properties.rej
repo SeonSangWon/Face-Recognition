@@ -1,0 +1,11 @@
+diff a/Face-Recognition/src/main/resources/database.properties b/Face-Recognition/src/main/resources/database.properties	(rejected hunks)
+@@ -1,5 +1,5 @@
+ db.driver=com.mysql.jdbc.Driver
+-db.url=
+-db.username=
+-db.password=
++db.url=jdbc:mysql://13.125.207.51:3309/faceid?serverTimezone=UTC&useSSL=false
++db.username=face01
++db.password=python
+ hibernate.dialect=org.hibernate.dialect.MySQLDialect
+\ No newline at end of file
