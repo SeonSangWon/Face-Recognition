@@ -86,6 +86,7 @@ public class MemberController {
 	/**
 	 * Method ID : loginCheck
 	 * Method 설명 : 홈페이지에서 ID와 PW를 입력받아 로그인을 진행한다.
+	 * @param result : 로그인 결과값
 	 * @param memberDTO
 	 * @param model
 	 * @param session
@@ -93,22 +94,49 @@ public class MemberController {
 	 */
 	@RequestMapping("/loginCheck")
 	public String loginCheck(MemberDTO memberDTO, Model model, HttpSession session) {
-		
+		 
+		//로그인 실패 : 0
+		//로그인 성공 : 1
+		//탈퇴한 사용자 : 2
+		int result = 0;
 		try {
 			
 			log.debug("아이디 : " + memberDTO.getId());
 			log.debug("비밀번호 : " + memberDTO.getPassword());
 		
-			memberService.login(memberDTO, session);
-			log.debug("MemberController : loginCheck() Success!!");
-			log.debug("MemberController : Session : " + session.getAttribute("student_id"));
-			
+			result = memberService.login(memberDTO, session);
+			if(result == 1)
+			{
+				log.debug("MemberController : loginCheck() Success!!");
+				log.debug("MemberController : Session : " + session.getAttribute("student_id"));
+				
+				//회원전용 홈페이지로 이동
+				return "redirect:/";
+			}
+			else if(result == 99)
+			{
+				//관리자 페이지로 이동
+				return "redirect:admin/adminMemberList";
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			log.error("MemberController : loginCheck() Error!!");
-			
 		}
-		return null;
+		
+		return "redirect:login";
 	}
 	
+	/**
+	 * Method ID : logout()
+	 * Method 설명 : 회원 로그아웃
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		
+		session.removeAttribute("student_id");
+		
+		return "redirect:/";
+	}
 }
