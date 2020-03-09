@@ -4,8 +4,18 @@
 
 2020.03.06 수정사항
  - Spring <-> Java GUI Application <-> Python REST API 방식을 통해 진행
-----------------------------------------------------------------------
+ 
+2020.03.09 진행상황
+ - Java GUI Application.exe 파일 배포 완료
+ - Spring <-> Java GUI Application <-> Python REST API 연동 완료
+ - Python 사용자 얼굴인식 구현 완료
+ - 사이트 (메인 / 회원가입 / 로그인 / 관리자[일부]) 구현 완료
+ - 로컬 PC 테스트 진행 : 완료
 
+Windows10 -> Ubuntu 마이그레이션을 진행하며 문제사항 
+ - Python 얼굴인식의 라이브러리 중 하나인 dlib 설치 에러
+ - Python REST API 24시 가동 [AWS Lamda 를 이용하면 가능하다고 함]
+----------------------------------------------------------------------
 개발환경 : Ubuntu(AWS), Spring, Python, MySQL
 
 관리자
