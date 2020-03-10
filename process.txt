@@ -15,8 +15,13 @@
 Windows10 -> Ubuntu 마이그레이션을 진행하며 문제사항 
  - Python 얼굴인식의 라이브러리 중 하나인 dlib 설치 에러
  - Python REST API 24시 가동 [AWS Lamda 를 이용하면 가능하다고 함]
+
+2020.03.10 진행상황
+ - AWS -> Naver Cloud Platform 변경 예정
+ - Ubuntu -> CentOS 변경 예정
 ----------------------------------------------------------------------
 개발환경 : Ubuntu(AWS), Spring, Python, MySQL
+-> CentOS / Spring 4 / Python 3.6 / MySQL 5.7 예정 --2020.03.10
 
 관리자
  - 로그인 페이지를 통해 관리자 전용 페이지로 이동한다.
