@@ -19,6 +19,9 @@ Windows10 -> Ubuntu 마이그레이션을 진행하며 문제사항
 2020.03.10 진행상황
  - AWS -> Naver Cloud Platform 변경 예정
  - Ubuntu -> CentOS 변경 예정
+ 
+2020.03.11 진행상황
+ - 도메인 추가 예정
 ----------------------------------------------------------------------
 개발환경 : Ubuntu(AWS), Spring, Python, MySQL
 -> CentOS / Spring 4 / Python 3.6 / MySQL 5.7 예정 --2020.03.10
@@ -60,9 +63,9 @@ GUI Application.EXE
    해당 회원의 ID 와 PW 를 학교 사이트에 대입해 세션이 유효한 학교 페이지를 활성화시킨다.
  - 얼굴 인식에 실패 했을 경우 에러 메시지를 출력한다.
 ------------------------------------------------------
-Database Name : faceid
-Host Name : python
-Password : python
+Database Name : 
+Host Name : 
+Password : 
 
 회원 - 학번, ID, PW, 이름, 전화번호, 탈퇴유무, 등록일자
 mysql> CREATE TABLE member(
@@ -104,10 +107,10 @@ com.spring.face.util
 
 AdminController
 - public String MemberList(MemberDTO memberDTO)		//IMember 인터페이스를 Authwried해서 회원 전체목록 호출
-- public String FileDownload()				            //FileDownload 메소드 호출
 
-FaceController
-- public String FaceCheck()			                  //IFaceID 인터페이스를 Authwired해서 얼굴인식 메소드 호출
+UtilController
+- public String FaceInsert()			                 //
+- public String FileDownload()				              //FileDownload 메소드 호출
 
 MemberController
 - public String MemberInsert(MemberDTO memberDTO)
@@ -120,28 +123,32 @@ MemberDTO
 - private String password [set / get]
 - private String name [set / get]
 - private String phone [set / get]
+- private String ghost [set / get]
 - private Timestamp create_date [set/get]
 - private Timestamp modified_date [set/get]
 
 IMemberDAO
 - public List<MemberDTO> memberList()			        //관리자 - 회원 전체목록
+- public MemberDTO login(MemberDTO memberDTO)   //로그인
 - public List<MemberDTO> selectMember(MemberDTO memberDTO) //한 명의 회원정보
 - public void memberInsert(MemberDTO memberDTO)		//회원가입
 - public void memberUpdate(MemberDTO memberDTO)		//정보수정
 - public void memberDelete(MemberDTO memberDTO)		//회원탈퇴 
 
 IMemberService
-- public List<MemberDTO> memberList()			        //관리자 - 회원 전체목록
+- public List<MemberDTO> memberList()            //관리자 - 회원 전체목록
+- public MemberDTO login(MemberDTO memberDTO)    //로그인
+- public List<MemberDTO> selectMember(MemberDTO memberDTO) //한 명의 회원정보
 - public void memberInsert(MemberDTO memberDTO)		//회원가입
 - public void memberUpdate(MemberDTO memberDTO)		//정보수정
 - public void memberDelete(MemberDTO memberDTO)		//회원탈퇴
 
-IFaceID
+IFace
 - public void faceInsert(MemberDTO memberDTO)		  //회원가입 후, 얼굴등록
 - public void faceDelete(MemberDTO memberDTO)		  //얼굴삭제
 
 FileUpload
-- public void Download()				                  //exe배포 다운로드
+- public void Download()                         //exe배포 다운로드
 
 ------------------------------------------------------
 URL
@@ -149,6 +156,5 @@ URL
 (home.jsp) / : 메인 page [회원가입 / 로그인]
 (join.jsp) join : 회원가입 page
 (login.jsp) login : 로그인 page
-(adminpage.jsp) admin : 관리자 - 메인 page
-(adminMemberList.jsp) adminMemberList : 관리자 - 모든 회원정보 목록 (패스워드)
+(adminMemberList.jsp) admin/MemberList : 관리자 - 모든 회원정보 목록
 (download.jsp) download : EXE 다운로드 page
