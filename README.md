@@ -68,18 +68,18 @@ Host Name :
 Password : 
 
 회원 - 학번, ID, PW, 이름, 전화번호, 탈퇴유무, 등록일자
-mysql> CREATE TABLE member(
-       student_id varchar(9) NOT NULL,
-       id varchar(20) NOT NULL,
-       password varchar(16) NOT NULL,
-       name varchar(30),
-       phone varchar(11),
-       ghost varchar(1) default 'n' NOT NULL,
-       create_date timestamp default CURRENT_TIMESTAMP NOT NULL,
-       modified_date timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-       Primary Key(student_id),
-       Unique Key(id)
-       );
+CREATE TABLE member(
+student_id varchar(9) NOT NULL,
+id varchar(20) NOT NULL,
+password varchar(16) NOT NULL,
+name varchar(30),
+phone varchar(11),
+ghost varchar(1) default 'n' NOT NULL,
+create_date timestamp default CURRENT_TIMESTAMP NOT NULL,
+modified_date timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+Primary Key(student_id),
+Unique Key(id)
+);
 ------------------------------------------------------
 Project Name : Face-Recognition
 Package Name : com.spring.face
