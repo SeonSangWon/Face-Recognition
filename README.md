@@ -1,5 +1,5 @@
-#Face-Recognition
-얼굴인식을 통한 학교 홈페이지 자동 로그인 By SangwWon, Seon
+#Face-Recognition   
+얼굴인식을 통한 학교 홈페이지 자동 로그인   By SangwWon, Seon
 ==================================================================
 
 IDE : Ubuntu , Spring Tool Suite 3.9.12.RELEASE , Eclipse   
