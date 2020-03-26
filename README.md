@@ -22,9 +22,13 @@ Windows10 -> Ubuntu 마이그레이션을 진행하며 문제사항
  
 2020.03.11 진행상황
  - 도메인 추가 예정
-----------------------------------------------------------------------
-개발환경 : Ubuntu(AWS), Spring, Python, MySQL
--> CentOS / Spring 4 / Python 3.6 / MySQL 5.7 예정 --2020.03.10
+ 
+2020.03.26 수정상황
+ - CentOS 에서 MySQL Root 문제로 인해 Ubuntu 사용
+ - Lamda 의 경우 유료 서비스이므로 사용X [서버를 항시 켜둬야할 것으로 보임]
+
+IDE : Ubuntu , Spring Tool Suite 3.9.12.RELEASE , Eclipse   
+Database : MySQL 5.7.29
 
 관리자
  - 로그인 페이지를 통해 관리자 전용 페이지로 이동한다.
