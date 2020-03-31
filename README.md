@@ -2,17 +2,20 @@
 얼굴인식을 통한 학교 홈페이지 자동 로그인
 ==================================================================
 
-IDE : Ubuntu , Spring Tool Suite 3.9.12.RELEASE , Eclipse   
+URL : https://seonsangwon.dev/face [진행예정]
+------------------------------------------------------------------
+
+IDE : Eclipse, Spring Tool Suite 3.9.12.RELEASE   
 Database : MySQL 5.7.29   
 
-2020.02.27 수정사항 
+2020.02.27
  - Spring <-> Python REST API 를 통해 사용자의 얼굴인식 결과 값을 전송
  - Python 의 Beautifulsoup Library 를 통한 파싱 보류 
 
-2020.03.06 수정사항
+2020.03.06
  - Spring <-> Java GUI Application <-> Python REST API 방식을 통해 진행
  
-2020.03.09 진행상황
+2020.03.09
  - Java GUI Application.exe 파일 배포 완료
  - Spring <-> Java GUI Application <-> Python REST API 연동 완료
  - Python 사용자 얼굴인식 구현 완료
@@ -23,16 +26,19 @@ Windows10 -> Ubuntu 마이그레이션을 진행하며 문제사항
  - Python 얼굴인식의 라이브러리 중 하나인 dlib 설치 에러
  - Python REST API 24시 가동 [AWS Lamda 를 이용하면 가능하다고 함]
 
-2020.03.10 진행상황
+2020.03.10
  - AWS -> Naver Cloud Platform 변경 예정
  - Ubuntu -> CentOS 변경 예정
  
-2020.03.11 진행상황
+2020.03.11
  - 도메인 추가 예정
  
-2020.03.26 수정상황
+2020.03.26
  - CentOS 에서 MySQL Root 문제로 인해 Ubuntu 사용
  - Lamda 의 경우 유료 서비스이므로 사용X [서버를 항시 켜둬야할 것으로 보임]
+ 
+2020.03.31
+ - Python REST API 를 백그라운드로 실행 예정
 
 관리자
  - 로그인 페이지를 통해 관리자 전용 페이지로 이동한다.
@@ -70,101 +76,3 @@ GUI Application.EXE
  - C:\face 경로에 있는 학습 모델들을 통해 사용자의 얼굴을 인식하며 일치하면 웹 파싱을 통해
    해당 회원의 ID 와 PW 를 학교 사이트에 대입해 세션이 유효한 학교 페이지를 활성화시킨다.
  - 얼굴 인식에 실패 했을 경우 에러 메시지를 출력한다.
- 
-------------------------------------------------------
-Database Name :   
-Host Name :   
-Password :   
-
-회원 - 학번, ID, PW, 이름, 전화번호, 탈퇴유무, 등록일자   
-CREATE TABLE member(   
-student_id varchar(9) NOT NULL,   
-id varchar(20) NOT NULL,   
-password varchar(16) NOT NULL,   
-name varchar(30),   
-phone varchar(11),   
-ghost varchar(1) default 'n' NOT NULL,   
-create_date timestamp default CURRENT_TIMESTAMP NOT NULL,   
-modified_date timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,   
-Primary Key(student_id),   
-Unique Key(id)   
-);   
-
-------------------------------------------------------
-Project Name : Face-Recognition   
-Package Name : com.spring.face   
-
-Package   
-com.spring.face.Controller
-- FaceController
-- MemberController
-
-com.spring.face.DTO
-- MemberDTO
-
-com.spring.face.DAO
-- IMemberDTO
-- MemberDTO
-
-com.spring.face.Service
-- IMemberService
-- MemberService
-
-com.spring.face.util
-- IFaceID
-- FaceID
-- FileDownload
-
-AdminController
-- public String MemberList(MemberDTO memberDTO)            //IMember 인터페이스를 Authwried해서 회원 전체목록 호출
-
-UtilController
-- public String FaceInsert()                               //
-- public String FileDownload()                             //FileDownload 메소드 호출
-
-MemberController
-- public String MemberInsert(MemberDTO memberDTO)
-- public String MemberUpdate(MemberDTO memberDTO)
-- public String MemberDelete(MemberDTO memberDTO)
-
-MemberDTO
-- private String student_id [set / get]
-- private String id [set / get]
-- private String password [set / get]
-- private String name [set / get]
-- private String phone [set / get]
-- private String ghost [set / get]
-- private Timestamp create_date [set/get]
-- private Timestamp modified_date [set/get]
-
-IMemberDAO
-- public List<MemberDTO> memberList()                      //관리자 - 회원 전체목록
-- public MemberDTO login(MemberDTO memberDTO)              //로그인
-- public List<MemberDTO> selectMember(MemberDTO memberDTO) //한 명의 회원정보
-- public void memberInsert(MemberDTO memberDTO)            //회원가입
-- public void memberUpdate(MemberDTO memberDTO)            //정보수정
-- public void memberDelete(MemberDTO memberDTO)            //회원탈퇴 
-
-IMemberService
-- public List<MemberDTO> memberList()                      //관리자 - 회원 전체목록
-- public MemberDTO login(MemberDTO memberDTO)              //로그인
-- public List<MemberDTO> selectMember(MemberDTO memberDTO) //한 명의 회원정보
-- public void memberInsert(MemberDTO memberDTO)            //회원가입
-- public void memberUpdate(MemberDTO memberDTO)            //정보수정
-- public void memberDelete(MemberDTO memberDTO)            //회원탈퇴
-
-IFace
-- public void faceInsert(MemberDTO memberDTO)              //회원가입 후, 얼굴등록
-- public void faceDelete(MemberDTO memberDTO)              //얼굴삭제
-
-FileUpload
-- public void Download()                                   //exe배포 다운로드
-
-------------------------------------------------------
-URL
-
-(home.jsp) / : 메인 page [회원가입 / 로그인]   
-(join.jsp) join : 회원가입 page   
-(login.jsp) login : 로그인 page   
-(adminMemberList.jsp) admin/MemberList : 관리자 - 모든 회원정보 목록   
-(download.jsp) download : EXE 다운로드 page   
